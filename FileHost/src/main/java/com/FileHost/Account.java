@@ -1,6 +1,7 @@
 package com.FileHost;
 
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.Id;
 
 import lombok.Data;
 
@@ -8,7 +9,9 @@ import lombok.Data;
 @Data
 public class Account {
 	
+	@Id
 	private String Id;
+	
 	private String Username;
 	private String Password;
 	private String Email;
