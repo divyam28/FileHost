@@ -15,7 +15,7 @@ public class AccountController {
 	@Autowired
 	private AccountService accountService;
 	
-	@RequestMapping("/{user}/{pass}")
+	@RequestMapping("/{user}/{pass}") //i havent made a login form yet so i dont know how to accept value from the user
 	public String CheckIfUserExists(@PathVariable String user,@PathVariable String pass) {
 		
 	    Account account = new Account(user,pass);
@@ -30,9 +30,8 @@ public class AccountController {
 		return accountService.getAllUsers();
 	}
 	
-	@RequestMapping(value = "/allusers",method=RequestMethod.POST)
+	@RequestMapping(value = "/allusers",method=RequestMethod.POST) //in postman I post a whole JSON body for an account
 	public void addUser(@RequestBody Account account) {
-		//Account account=new Account(Username,Password);
 		accountService.addUser(account);
 	}
 
