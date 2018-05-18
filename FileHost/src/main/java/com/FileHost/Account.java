@@ -1,7 +1,10 @@
 package com.FileHost;
 
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
@@ -11,10 +14,11 @@ public class Account {
 	
 	@Id
 	private String Id;
-	
 	private String Username;
 	private String Password;
 	private String Email;
+	
+	private List<MultipartFile> Files;	
 	
 	public Account(String username, String password) {
 		super();
@@ -56,6 +60,14 @@ public class Account {
 
 	public void setEmail(String email) {
 		this.Email = email;
+	}
+	
+	public List<MultipartFile> getFiles(List<MultipartFile> Files) {
+		return Files;
+	}
+	
+	public void setFiles(List<MultipartFile> files) {
+		this.Files = files;
 	}
 	
 	
