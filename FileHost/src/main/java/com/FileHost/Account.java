@@ -13,7 +13,7 @@ import lombok.Data;
 public class Account {
 	
 	@Id
-	private String Id;
+	private String _id;
 	private String Username;
 	private String Password;
 	private String Email;
@@ -31,11 +31,11 @@ public class Account {
 	}
 
 	public String getId() {
-		return Id;
+		return _id;
 	}
 
 	public void setId(String id) {
-		this.Id = id;
+		this._id = id;
 	}
 
 	public String getUsername() {
@@ -62,7 +62,7 @@ public class Account {
 		this.Email = email;
 	}
 	
-	public List<MultipartFile> getFiles(List<MultipartFile> Files) {
+	public List<MultipartFile> getFiles() {
 		return Files;
 	}
 	
