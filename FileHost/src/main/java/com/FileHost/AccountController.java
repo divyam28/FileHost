@@ -17,6 +17,7 @@ public class AccountController {
 	
 	@Autowired
 	private AccountService accountService;
+	private FileStorageService filestorageService;
 	
 	@RequestMapping("/{user}/{pass}")
 	public String Login(@PathVariable String user,@PathVariable String pass) {
@@ -44,10 +45,10 @@ public class AccountController {
 		accountService.addUser(account);
 	}
 	
-	@RequestMapping(value= "/uploadFile")
+	@RequestMapping(value= "/uploadFile", method=RequestMethod.POST)
 	public void uploadFile(@RequestParam MultipartFile file, Account account) {
 		List<MultipartFile> fileList = account.getFiles();
-		accountService.addFile(fileList, file);
+		filestorageService.addFile(fileList, file);
 		System.out.println("File uploaded!");
 	}
 	

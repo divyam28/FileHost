@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import Exceptions.ResponseCode;
 import Exceptions.UtilityException;
@@ -43,28 +42,11 @@ public class AccountServiceImp implements AccountService {
 	}
 
 	@Override
-	public List<MultipartFile> showFiles(Account account) {
-		List<MultipartFile> fileList = account.getFiles();
-		return fileList;
-	}
-
-	@Override
-	public void addFile(List<MultipartFile> fileList, MultipartFile file) {
-		fileList.add(file);
-		
-	}
-
-	@Override
-	public void deleteFile(List<MultipartFile> fileList, MultipartFile file) {
-		fileList.remove(file);
-		
-	}
-
-	@Override
 	public void deleteUser(Account account) {
 		accountrepository.delete(account);
 		
 	}
+
 	
 	
 	
