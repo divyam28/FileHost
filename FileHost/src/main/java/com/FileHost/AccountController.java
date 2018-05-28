@@ -3,7 +3,6 @@ package com.FileHost;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,31 +28,27 @@ public class AccountController {
 		}
 	}
 	
-    @RequestMapping("/login")
-	public String showLoginPage(){
-        return "login.html";
-
-    }
 	
 	@RequestMapping("/allusers")
 	public List<Account> getAllUsers(){
 		return accountService.getAllUsers();
 	}
 	
-	@RequestMapping(value = "/adduser",method=RequestMethod.POST)
+	@RequestMapping(value = "/signup",method=RequestMethod.POST)
 	public void addUser(@RequestBody Account account) {
 		accountService.addUser(account);
 	}
 	
 	@RequestMapping(value= "/uploadFile", method=RequestMethod.POST)
-	public void uploadFile(@RequestParam MultipartFile file, Account account) {
+	public void uploadFile(@RequestParam MultipartFile file,Account account) {
 		List<MultipartFile> fileList = account.getFiles();
 		filestorageService.addFile(fileList, file);
 		System.out.println("File uploaded!");
 	}
 	
-	@RequestMapping(value = "/showFiles")
-	public void showFiles(List<MultipartFile> fileList) {
+	@RequestMapping(value = "/showFiles", method=RequestMethod.GET)
+	public void showFiles(Account account) {
+		filestorageService.showFiles(account);
 		
 	}
 	
