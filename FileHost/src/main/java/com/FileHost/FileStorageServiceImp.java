@@ -17,6 +17,17 @@ public class FileStorageServiceImp implements FileStorageService{
 		fileList.add(file);
 		
 	}
+	
+	@Override
+	public MultipartFile findFile(List<MultipartFile> fileList, String filename) {
+		for(MultipartFile f : fileList) {
+			String fname = f.getOriginalFilename();
+			if (fname.equals(filename)){
+				return f;
+			}
+		}
+		return null;
+	}
 
 	@Override
 	public void deleteFile(List<MultipartFile> fileList, MultipartFile file) {

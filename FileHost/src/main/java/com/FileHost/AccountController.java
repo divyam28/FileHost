@@ -40,12 +40,18 @@ public class AccountController {
 	}
 	
 	@RequestMapping(value= "/uploadFile", method=RequestMethod.POST)
-	public void uploadFile(@RequestParam MultipartFile file,Account account) {
+	public void uploadFile(@RequestParam MultipartFile file, @RequestParam Account account) {
 		List<MultipartFile> fileList = account.getFiles();
 		filestorageService.addFile(fileList, file);
 		System.out.println("File uploaded!");
 	}
 	
+	@RequestMapping(value="/downloadFile", method=RequestMethod.POST)
+	public MultipartFile downloadFile(@RequestParam String filename, @RequestParam Account account) {
+		List<MultipartFile> fileList = account.getFiles();
+		return filestorageService.findFile(fileList, filename);
+		
+	}
 	@RequestMapping(value = "/showFiles", method=RequestMethod.GET)
 	public void showFiles(Account account) {
 		filestorageService.showFiles(account);
