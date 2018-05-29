@@ -21,8 +21,9 @@ public enum ResponseCode {
 	INVALID_PASSWORD(8003,"Password entered is incorrect. Please try again!"),
 	ERROR_DECRYPTING_DATA(8004,"Error reading the request decrypted payload"),
 	NO_ROUTE_AVAILABLE(5064, "No  route available!"),
-	TOKEN_EXPIRED(8005,"Authentication token has expired. Please login again!");
-
+	TOKEN_EXPIRED(8005,"Authentication token has expired. Please login again!"),
+	EMPTY_FILE(1001,"Please select a file to upload"),
+	FILE_DOES_NOT_EXIST(1002, "This file does not exist");
 	private int code;
 	private String description;
 	
