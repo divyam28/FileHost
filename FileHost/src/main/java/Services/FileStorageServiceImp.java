@@ -28,9 +28,11 @@ public class FileStorageServiceImp implements FileStorageService{
 			throw new UtilityException(ResponseCode.EMPTY_FILE);
 		}
 		Path folderpath = Paths.get(MASTER_FOLDER + username);
+		Account account = accountRepository.findByUsername(username);
 		
 		if(Files.notExists(folderpath)){
 			try {
+				account.setFolder(folderpath);
 				Files.createDirectory(folderpath);
 			} catch (IOException e) {
 				e.printStackTrace();
