@@ -36,7 +36,7 @@ public class FileStorageController {
 		
 	}
 	
-	@RequestMapping(value = "/deleteFile", method=RequestMethod.POST)
+	@RequestMapping(value = "/deleteFile", method=RequestMethod.DELETE)
 	public void deleteFile(@RequestParam String filename,@RequestParam String username) {
 		filestorageService.deleteFile(filename, username);
 	}
